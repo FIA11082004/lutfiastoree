@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Detail</title>
+    <style>
+        /* Style untuk body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Style untuk judul */
+        h1 {
+            text-align: center;
+        }
+
+        /* Style untuk informasi order */
+        .order-info {
+            margin-bottom: 20px;
+        }
+
+        /* Style untuk item order */
+        .order-item {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Style untuk total harga order */
+        .total-price {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Order Detail</h1>
+    <div class="order-info">
+        <h2>Order ID: {{ order.id }}</h2>
+        <p>Customer: {{ order.customer_name }}</p>
+        <p>Address: {{ order.address }}</p>
+        <p>Total Price: ${{ order.total_price }}</p>
+        <p>Created At: {{ order.created_at }}</p>
+    </div>
+    <h3>Order Items:</h3>
+    <ul>
+        {% for order_item in order.orderitem_set.all %}
+        <li class="order-item">
+            <p>Product: {{ order_item.product.name }}</p>
+            <p>Quantity: {{ order_item.quantity }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <p class="total-price">Total Order Price: ${{ order.total_price }}</p>
+</body>
+
+</html>

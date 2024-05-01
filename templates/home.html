@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LutfiaStore</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #faf8f8;
+        }
+
+        .navbar {
+            background-color: #f47600;
+        }
+
+        .navbar a {
+            color: #ffffff;
+            padding: 14px 20px;
+        }
+
+        .navbar a:hover {
+            background-color: #f47600;
+            color: #f47600;
+        }
+
+        .judul {
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 0px;
+            background-color: #f47600;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .card-title,
+        .card-text {
+            color: #f47600;
+        }
+
+        .alamat {
+            color: #f47600;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .footer {
+            padding: 20px 0;
+            text-align: center;
+            background-color: #f47600;
+        }
+
+        .footer p {
+            color: #ffffff;
+        }
+
+        .menu a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .btn-outline-success {
+            color: #f47600;
+            border-color: #084eaa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#" style="color: #ffffff; font-weight: bold; font-size: 30px;">LutfiaStore
+
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="# "
+                                style="color: #ffffff; font-weight: bold; font-size: 20px;">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#detail"
+                                style="color: #ffffff; font-weight: bold; font-size: 20px;">Detail</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#keranjang"
+                                style="color: #ffffff; font-weight: bold; font-size: 20px;">Keranjang</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#checkout"
+                                style="color: #ffffff; font-weight: bold; font-size: 20px;">Checkout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#kontak"
+                                style="color: #ffffff; font-weight: bold; font-size: 20px;">Kontak</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-4">
+        <h1 class="judul mb-4">Selamat datang di LutfiaStore</h1>
+
+        <!-- Tambahkan gambar di sini -->
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <img src="/media/banner_images/Banner.webp" alt="Gambar Selamat Datang"
+                    style="width: 100%; max-width: 100%;" />
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Loop produk dimulai -->
+            {% for product in products %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <img class="card-img-top" src="{{ product.image.url }}" alt="Product Image">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ product.name }}</h2>
+                        <p class="card-text">Kategori: {{ product.category }}</p>
+                        <p class="card-text">Harga: Rp{{ product.price }}</p>
+                        <div class="text-left">
+                            <a href="{% url 'product_detail' product_id=product.id %}"
+                                class="btn btn-sm btn-outline-success">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Loop produk selesai -->
+        </div>
+
+        <!-- Tambahkan gambar di sini -->
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <img src="/media/banner_images/Banner.webp" alt="Gambar Selamat Datang"
+                    style="width: 100%; max-width: 100%;" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="judul mb-0">Lokasi LutfiaStore</h2>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3973.8546228066975!2d119.43554577726437!3d-5.127111081571101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNcKwMDcnMzcuNiJTIDExOcKwMjYnMjUuNSJF!5e0!3m2!1sid!2sid!4v1714479570031!5m2!1sid!2sid"
+                    width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
+            <div class="col-md-6">
+                <div class="container">
+                    <h2 class="judul mb-0"> Produk LutfiaStore</h2>
+                    <img src="/media/product_images/produk1.jpg" alt="Produk LutfiaStore" width="500" height="350"
+                        style="border: 0;">
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer mt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="float-left">&copy; 2024 Toko . All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <nav class="menu">
+                            <a href="#">Home</a>
+                            <a href="#detail">Detail</a>
+                            <a href="#keranjang">Keranjang</a>
+                            <a href="#checkout">Checkout</a>
+                            <a href="#kontak">Kontak</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
